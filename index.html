@@ -25,388 +25,15 @@
       href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script>
-      (function () {
-        var theme = null;
-        try {
-          theme = localStorage.getItem("theme");
-        } catch (e) {}
-        if (theme !== "light" && theme !== "dark") {
-          theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-        }
-        document.documentElement.dataset.theme = theme;
-      })();
-    </script>
+    <script src="assets/site.js"></script>
+<link rel="stylesheet" href="assets/site.css" />
     <style>
-      :root {
-        --bg: #fff;
-        --fg: #09090b;
-        --primary: #fca311;
-        --primary-fg: #fafafa;
-        --muted: #f4f4f5;
-        --muted-fg: #52525c;
-        --card: #fff;
-        --border: #e4e4e7;
-        --ring: #9f9fa9;
-        --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
-          monospace;
-        color-scheme: light;
-      }
-
-      :root[data-theme="dark"] {
-        --bg: #1a1b25;
-        --fg: #d4d4d8;
-        --primary-fg: #09090b;
-        --muted: #27272a;
-        --muted-fg: #b8b8bd;
-        --card: #181922;
-        --border: #27272a;
-        --ring: #71717b;
-        color-scheme: dark;
-      }
-
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-      }
-
-      body {
-        margin: 0;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        background: var(--bg);
-        color: var(--fg);
-        font-family: var(--font-mono);
-        font-size: 15px;
-        line-height: 1.5;
-        -webkit-font-smoothing: antialiased;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      /* header */
-      .site-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 24px 32px;
-      }
-
-      .logo {
-        font-size: 16px;
-        font-weight: 700;
-      }
-
-      .logo span {
-        color: var(--primary);
-      }
-
-      .theme-toggle {
-        display: grid;
-        place-items: center;
-        width: 28px;
-        height: 28px;
-        padding: 0;
-        border: 0;
-        border-radius: 6px;
-        background: none;
-        color: var(--muted-fg);
-        cursor: pointer;
-      }
-
-      .theme-toggle:hover {
-        background: var(--muted);
-        color: var(--fg);
-      }
-
-      .theme-toggle svg {
-        width: 16px;
-        height: 16px;
-      }
-
-      .theme-toggle .sun {
-        display: none;
-      }
-
-      :root[data-theme="dark"] .theme-toggle .sun {
-        display: block;
-      }
-
-      :root[data-theme="dark"] .theme-toggle .moon {
-        display: none;
-      }
-
-      /* layout */
-      main {
-        flex: 1;
-        width: 100%;
-        max-width: 672px;
-        margin: 0 auto;
-        padding: 48px 16px 96px;
-      }
-
       .avatar {
         display: block;
         width: 64px;
         height: 64px;
         border-radius: 50%;
         object-fit: cover;
-      }
-
-      h1 {
-        margin: 22px 0 0;
-        font-size: 24px;
-        line-height: 1.35;
-        font-weight: 700;
-        letter-spacing: -0.01em;
-      }
-
-      h1 .name {
-        border-bottom: 2px solid var(--primary);
-        padding-bottom: 1px;
-      }
-
-      .intro {
-        margin-top: 16px;
-      }
-
-      .intro p {
-        margin: 0;
-      }
-
-      .intro p + p {
-        margin-top: 8px;
-      }
-
-      .actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 20px;
-      }
-
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        height: 32px;
-        padding: 0 12px;
-        border-radius: 8px;
-        font-size: 15px;
-        font-weight: 500;
-        line-height: 1;
-      }
-
-      .btn svg {
-        width: 16px;
-        height: 16px;
-      }
-
-      .btn-primary {
-        background: var(--primary);
-        color: var(--primary-fg);
-      }
-
-      .btn-primary:hover {
-        filter: brightness(0.96);
-      }
-
-      /* sections */
-      section {
-        margin-top: 48px;
-      }
-
-      h2 {
-        margin: 0 0 8px;
-        font-size: 13px;
-        font-weight: 600;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-      }
-
-      .section-lede {
-        margin: 0;
-        color: var(--muted-fg);
-      }
-
-      /* project cards */
-      .cards {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 16px;
-        margin-top: 16px;
-      }
-
-      .card {
-        padding: 12px;
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        background: var(--card);
-      }
-
-      .card-head {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .card-icon {
-        flex: none;
-        width: 20px;
-        height: 20px;
-        display: grid;
-        place-items: center;
-        border-radius: 5px;
-        background: var(--muted);
-        color: var(--muted-fg);
-      }
-
-      .card-icon svg {
-        width: 14px;
-        height: 14px;
-      }
-
-      .card-title {
-        font-weight: 600;
-      }
-
-      .card-title:hover {
-        text-decoration: underline;
-        text-underline-offset: 3px;
-      }
-
-      .badge {
-        padding: 1px 8px;
-        border-radius: 999px;
-        background: #ffedd5;
-        color: #9f2d00;
-        font-size: 13px;
-        white-space: nowrap;
-      }
-
-      :root[data-theme="dark"] .badge {
-        background: #441306;
-        color: #f05100;
-      }
-
-      .card-repo {
-        margin-left: auto;
-        display: grid;
-        place-items: center;
-        width: 20px;
-        height: 20px;
-        border-radius: 4px;
-        color: var(--muted-fg);
-      }
-
-      .card-repo:hover {
-        background: var(--muted);
-        color: var(--fg);
-      }
-
-      .card-repo svg {
-        width: 14px;
-        height: 14px;
-      }
-
-      .card-desc {
-        margin: 8px 0 0;
-        color: var(--muted-fg);
-      }
-
-      .card-more {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 4px;
-        color: var(--muted-fg);
-      }
-
-      .card-more:hover {
-        border-color: var(--ring);
-      }
-
-      .card-more-title {
-        font-weight: 600;
-        color: var(--fg);
-      }
-
-      .card-more:hover .card-more-title {
-        text-decoration: underline;
-        text-underline-offset: 3px;
-      }
-
-      /* pills */
-      .pills {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 12px;
-      }
-
-      .pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        height: 32px;
-        padding: 0 12px;
-        border-radius: 999px;
-        background: var(--muted);
-      }
-
-      .pill:hover {
-        box-shadow: inset 0 0 0 1px var(--ring);
-      }
-
-      .pill svg {
-        width: 16px;
-        height: 16px;
-      }
-
-      /* footer */
-      .site-footer {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        padding: 24px 32px;
-        border-top: 1px solid var(--border);
-        color: var(--muted-fg);
-        font-size: 13px;
-      }
-
-      .site-footer a:hover {
-        color: var(--fg);
-      }
-
-      @media (max-width: 560px) {
-        .site-header {
-          padding: 20px;
-        }
-
-        main {
-          padding: 32px 20px 64px;
-        }
-
-        h1 {
-          font-size: 22px;
-        }
-
-        .cards {
-          grid-template-columns: 1fr;
-        }
-
-        .site-footer {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 8px;
-          padding: 20px;
-        }
       }
     </style>
   </head>
@@ -483,7 +110,7 @@
                   <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
                 </svg>
               </span>
-              <a class="card-title" href="https://electrichtml.com">ElectricHTML</a>
+              <a class="card-title" href="projects/electrichtml/">ElectricHTML</a>
               <span class="badge">JavaScript</span>
               <a
                 class="card-repo"
@@ -517,7 +144,7 @@
                   <path d="M12 7v5l3 2" />
                 </svg>
               </span>
-              <a class="card-title" href="https://runbinder.com">RunBinder</a>
+              <a class="card-title" href="projects/runbinder/">RunBinder</a>
               <span class="badge">Go</span>
               <a
                 class="card-repo"
@@ -551,7 +178,7 @@
                   <path d="M12 19h8" />
                 </svg>
               </span>
-              <a class="card-title" href="https://terminalpastebin.com">Terminal Paste Bin</a>
+              <a class="card-title" href="projects/terminal-paste-bin/">Terminal Paste Bin</a>
               <span class="badge">Go</span>
               <a
                 class="card-repo"
@@ -605,16 +232,5 @@
       <span>© 2026 Built with ♥ by Evan</span>
       <a href="https://github.com/evanjhopkins/evanjhopkins.com">This website is open source ↗</a>
     </footer>
-
-    <script>
-      document.getElementById("theme-toggle").addEventListener("click", function () {
-        var root = document.documentElement;
-        var next = root.dataset.theme === "dark" ? "light" : "dark";
-        root.dataset.theme = next;
-        try {
-          localStorage.setItem("theme", next);
-        } catch (e) {}
-      });
-    </script>
   </body>
 </html>

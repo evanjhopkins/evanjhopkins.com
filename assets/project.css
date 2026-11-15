@@ -1,0 +1,112 @@
+/* Shared components for /projects/* pages */
+
+.back {
+  display: inline-block;
+  margin-bottom: 28px;
+  color: var(--muted-fg);
+  font-size: 13px;
+}
+
+.back:hover {
+  color: var(--fg);
+}
+
+.project-icon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--muted);
+  color: var(--primary);
+}
+
+.project-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.btn-outline {
+  border: 1px solid var(--border);
+  color: var(--fg);
+}
+
+.btn-outline:hover {
+  border-color: var(--ring);
+  background: var(--muted);
+}
+
+/* code and terminal blocks */
+.code {
+  margin: 16px 0 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--muted);
+  overflow: hidden;
+}
+
+.code figcaption {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted-fg);
+  font-size: 13px;
+}
+
+.code pre {
+  margin: 0;
+  padding: 12px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.code code {
+  font-family: inherit;
+}
+
+/* numbered rows */
+.principles {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--border);
+}
+
+.principles li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.num {
+  color: var(--muted-fg);
+  font-size: 13px;
+}
+
+.principles h3 {
+  margin: 0 0 4px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.principles p {
+  margin: 0;
+  color: var(--muted-fg);
+}
+
+.principles code {
+  padding: 1px 4px;
+  border-radius: 4px;
+  background: var(--muted);
+  color: var(--fg);
+}
+
+.quote {
+  margin: 48px 0 0;
+  padding-left: 12px;
+  border-left: 2px solid var(--primary);
+  color: var(--muted-fg);
+}
