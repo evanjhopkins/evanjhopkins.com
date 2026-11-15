@@ -151,16 +151,11 @@
       }
 
       .avatar {
+        display: block;
         width: 64px;
         height: 64px;
-        display: grid;
-        place-items: center;
-        border: 1px solid var(--border);
         border-radius: 50%;
-        background: var(--muted);
-        color: var(--muted-fg);
-        font-size: 20px;
-        font-weight: 600;
+        object-fit: cover;
       }
 
       h1 {
@@ -450,7 +445,7 @@
     </header>
 
     <main>
-      <div class="avatar" aria-hidden="true">EH</div>
+      <img class="avatar" src="avatar.jpg" alt="Evan Hopkins" width="64" height="64" />
 
       <h1>Hey, I'm <span class="name">Evan Hopkins</span>!</h1>
 
