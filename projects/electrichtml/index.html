@@ -47,7 +47,27 @@
       }
 
       .demo-title {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
         font-weight: 600;
+      }
+
+      .demo-spin {
+        width: 14px;
+        height: 14px;
+        color: var(--muted-fg);
+        animation: spin 1s linear infinite;
+      }
+
+      .demo-spin[hidden] {
+        display: none;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
       }
 
       .demo-live {
@@ -76,6 +96,24 @@
         animation: pulse 2s ease-in-out infinite;
       }
 
+      .demo-live[hidden] {
+        display: none;
+      }
+
+      .demo-live-error {
+        background: #ffe2e2;
+        color: #9f0712;
+      }
+
+      :root[data-theme="dark"] .demo-live-error {
+        background: #460809;
+        color: #ff6568;
+      }
+
+      .demo-live-error::before {
+        display: none;
+      }
+
       @keyframes pulse {
         50% {
           opacity: 0.35;
@@ -83,15 +121,10 @@
       }
 
       @media (prefers-reduced-motion: reduce) {
-        .demo-live::before {
+        .demo-live::before,
+        .demo-spin {
           animation: none;
         }
-      }
-
-      .demo-status {
-        margin: 0 0 12px;
-        color: var(--muted-fg);
-        font-size: 13px;
       }
 
       .demo-grid {
@@ -219,16 +252,28 @@
 
         <div class="demo">
           <div class="demo-head">
-            <span class="demo-title">ISS Live Tracker</span>
-            <span class="demo-live">Live API data</span>
+            <span class="demo-title">
+              ISS Live Tracker
+              <svg
+                class="demo-spin"
+                id="demo-spin"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.85 1.03 6.51 2.71L21 8" />
+                <path d="M21 3v5h-5" />
+              </svg>
+            </span>
+            <span class="demo-live" eh-loaded hidden>Live API data</span>
+            <span class="demo-live demo-live-error" eh-error hidden>API unavailable</span>
           </div>
 
-          <p class="demo-status" eh-loading>Connecting to api.wheretheiss.at…</p>
-          <p class="demo-status" eh-error>
-            Could not reach the ISS API. Everything else on this page still works.
-          </p>
-
-          <div class="demo-grid" eh-loaded>
+          <div class="demo-grid">
             <div class="stat">
               <span class="stat-label">Latitude</span>
               <span class="stat-value" eh-data="latitude" eh-round="2">—</span>
@@ -249,7 +294,7 @@
             </div>
           </div>
 
-          <div class="demo-foot" eh-loaded>
+          <div class="demo-foot">
             <span><strong>Visibility</strong> <span eh-data="visibility">—</span></span>
             <span><strong>Station</strong> <span eh-data="name">—</span></span>
             <span><strong>NORAD</strong> <span eh-data="id">—</span></span>
@@ -328,6 +373,17 @@
       <span>© 2026 Built with ♥ by Evan</span>
       <a href="https://github.com/evanjhopkins/evanjhopkins.com">This website is open source ↗</a>
     </footer>
+
+    <script>
+      (function () {
+        var spinner = document.getElementById("demo-spin");
+        function settle() {
+          if (spinner) spinner.setAttribute("hidden", "");
+        }
+        document.addEventListener("electric-html:success", settle, { once: true });
+        document.addEventListener("electric-html:error", settle, { once: true });
+      })();
+    </script>
 
     <script
       eh-source="https://api.wheretheiss.at"
