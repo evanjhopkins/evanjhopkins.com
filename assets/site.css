@@ -135,6 +135,17 @@ h1 .name {
   margin-top: 8px;
 }
 
+.intro a {
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.intro a:hover {
+  color: var(--primary);
+}
+
 .actions {
   display: flex;
   flex-wrap: wrap;
