@@ -6,9 +6,9 @@ Static HTML, CSS, and JavaScript with no build step, published via GitHub Pages 
 
 ## Structure
 
-- `index.html` — home page
-- `projects/` — project pages (ElectricHTML, RunBinder, Terminal Paste Bin)
-- `assets/` — shared styles and theme toggle script
+- `index.html`: home page
+- `projects/`: project pages (ElectricHTML, RunBinder, Terminal Paste Bin)
+- `assets/`: shared styles and theme toggle script
 
 ## Local preview
 
