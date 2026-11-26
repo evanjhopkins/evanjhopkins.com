@@ -35,6 +35,78 @@
         border-radius: 50%;
         object-fit: cover;
       }
+
+      /* featured project */
+      .feature {
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+        margin-top: 16px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: var(--card);
+        overflow: hidden;
+      }
+
+      .feature-media {
+        min-height: 200px;
+      }
+
+      .feature-media img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .feature-body {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 8px;
+        padding: 16px;
+      }
+
+      .feature-meta {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0;
+        color: var(--muted-fg);
+        font-size: 13px;
+      }
+
+      .feature-title {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 1.2;
+      }
+
+      .feature-title a:hover {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      .feature-desc {
+        margin: 0;
+        color: var(--muted-fg);
+      }
+
+      .feature-body .btn {
+        margin-top: 4px;
+      }
+
+      @media (max-width: 560px) {
+        .feature {
+          grid-template-columns: 1fr;
+        }
+
+        .feature-media {
+          min-height: 0;
+          aspect-ratio: 1260 / 1000;
+        }
+      }
     </style>
   </head>
   <body>
@@ -94,6 +166,48 @@
           GitHub
         </a>
       </div>
+
+      <section>
+        <h2>Current project</h2>
+        <p class="section-lede">The game I'm building now:</p>
+
+        <article class="feature">
+          <div class="feature-media">
+            <img
+              src="assets/solitra-cover.jpg"
+              alt="Solitra cover art: a torii seal puzzle grid on washi paper with cherry blossoms"
+              width="900"
+              height="714"
+            />
+          </div>
+          <div class="feature-body">
+            <p class="feature-meta"><span class="badge">New</span> Game Boy Advance · Free</p>
+            <h3 class="feature-title">
+              <a href="https://evanjhopkins.itch.io/solitra">Solitra</a>
+            </h3>
+            <p class="feature-desc">
+              A serene logic puzzle inspired by Sudoku and Star Battle. Find a place for every
+              torii seal.
+            </p>
+            <a class="btn btn-primary" href="https://evanjhopkins.itch.io/solitra">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M15 3h6v6" />
+                <path d="M10 14 21 3" />
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              </svg>
+              Play on itch.io
+            </a>
+          </div>
+        </article>
+      </section>
 
       <section>
         <h2>Projects</h2>
