@@ -40,7 +40,6 @@
       .feature {
         display: grid;
         grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-        margin-top: 16px;
         border: 1px solid var(--border);
         border-radius: 10px;
         background: var(--card);
@@ -81,6 +80,8 @@
         font-size: 20px;
         font-weight: 600;
         line-height: 1.2;
+        letter-spacing: normal;
+        text-transform: none;
       }
 
       .feature-title a:hover {
@@ -168,9 +169,6 @@
       </div>
 
       <section>
-        <h2>Current project</h2>
-        <p class="section-lede">The game I'm building now:</p>
-
         <article class="feature">
           <div class="feature-media">
             <img
@@ -182,9 +180,9 @@
           </div>
           <div class="feature-body">
             <p class="feature-meta"><span class="badge">New</span> Game Boy Advance · Free</p>
-            <h3 class="feature-title">
+            <h2 class="feature-title">
               <a href="https://evanjhopkins.itch.io/solitra">Solitra</a>
-            </h3>
+            </h2>
             <p class="feature-desc">
               A serene logic puzzle inspired by Sudoku and Star Battle. Find a place for every
               torii seal.
@@ -203,7 +201,7 @@
                 <path d="M10 14 21 3" />
                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
               </svg>
-              Play on itch.io
+              Download on itch.io
             </a>
           </div>
         </article>
